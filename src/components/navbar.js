@@ -46,13 +46,16 @@ const CartButton = styled.button`
   }
 `;
 
-export default function NavbarComponent(){
+export default function NavbarComponent(props){
+
+
+
     return(
         <>
         <Navbar>
             <Title>Lojão da Giu</Title>
             <SearchContainer>
-                <SearchInput type='text' placeholder='Pesquise o nome do produto...' />
+                <SearchInput onChange={props.onChange} type='text' placeholder='Pesquise o nome do produto...' />
             </SearchContainer>
             <CartButton>Ver carrinho</CartButton>
         </Navbar>
