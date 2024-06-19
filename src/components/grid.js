@@ -20,13 +20,10 @@ const breakpoints = {
   const GridContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
 `;
 
 const GridItem = styled.div`
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 15px;
   box-sizing: border-box;
 
   ${({ xs }) => (xs ? getColumnWidth(xs) : 'width: 100%;')}
