@@ -11,9 +11,12 @@ const Navbar = styled.nav`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-const Title = styled.h1`
+const Title = styled.a`
   font-size: 1.5rem;
   text-align: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
   margin: 0;
 `;
 
@@ -39,7 +42,7 @@ export default function NavbarComponent(props){
     return(
         <>
         <Navbar>
-            <Title>Lojão da Giu</Title>
+            <Title href='/'>Lojão da Giu</Title>
             <SearchContainer>
                 <SearchInput onChange={props.onChange} type='text' placeholder='Pesquise o nome do produto...' />
             </SearchContainer>
