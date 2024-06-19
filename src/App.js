@@ -43,13 +43,16 @@ export default function App() {
 
   //Ordenando pelo preco
   function toogleOrderByPrice() {
+
+    let updatedProductsByCategory = [...productsByCategory];
+
     if (orderByPrice === "desc") {
-      const order = productsByCategory.sort((a, b) => ((a.preco) - (b.preco)));
-      setDisplayProducts(order);
+      const order = updatedProductsByCategory.sort((a, b) => ((a.preco) - (b.preco)));
+      setDisplayProducts([...order]);
       setOrderByPrice("asc");
     } else {
-      const order = productsByCategory.sort((a, b) => ((b.preco) - (a.preco)));
-      setDisplayProducts(order);
+      const order = updatedProductsByCategory.sort((a, b) => ((b.preco) - (a.preco)));
+      setDisplayProducts([...order]);
       setOrderByPrice("desc");
     }
   };
