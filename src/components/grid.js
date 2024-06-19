@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-
+//Sistema de Grid Simples
 
 // Tamanhos de tela
 const breakpoints = {
@@ -23,7 +23,7 @@ const breakpoints = {
 `;
 
 const GridItem = styled.div`
-  padding: 15px;
+  padding: 20px;
   box-sizing: border-box;
 
   ${({ xs }) => (xs ? getColumnWidth(xs) : 'width: 100%;')}

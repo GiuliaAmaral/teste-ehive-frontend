@@ -23,27 +23,12 @@ const CardDescription = styled.p`
   color: #666;
 `;
 
-const CardButton = styled.button`
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
-
 
 export default function CardComponent(props){
     return(
         <Card>
             <CardTitle>{props.title}</CardTitle>
             <CardDescription>{props.description}</CardDescription>
-            <CardButton>{props.buttonLabel}</CardButton>
         </Card>
     )
 }

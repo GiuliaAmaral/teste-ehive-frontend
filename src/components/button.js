@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Estilos do botão baseados no Material Design
 const StyledButton = styled.button`
-  background-color: #6200ea;
+  background-color: #007FFF;
   color: white;
+  margin: 0.1rem;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
@@ -16,7 +16,6 @@ const StyledButton = styled.button`
   transition: background-color 0.3s, box-shadow 0.3s;
 
   &:hover {
-    background-color: #3700b3;
     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
                 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
                 0px 3px 14px 2px rgba(0, 0, 0, 0.12);

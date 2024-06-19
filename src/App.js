@@ -1,74 +1,86 @@
-import './App.css';
-import { useState } from 'react';
 import CardComponent from './components/card';
-import { GridContainer, GridItem } from './components/grid';
 import NavbarComponent from './components/navbar';
-import products from './assets/products.json'
 import ButtonComponent from './components/button';
+import { GridContainer, GridItem } from './components/grid';
 
-function App() {
+import products from './assets/products.json'
+import { useState } from 'react';
 
-  const categorys = Array.from(new Set(products.map(item => item.categoria)));
+export default function App() {
+
   const [displayProducts, setDisplayProducts] = useState(products);
   const [productsByCategory, setProductsByCategory] = useState(products);
   const [categoryActive, setCategoryActive] = useState("");
   const [orderByPrice, setOrderByPrice] = useState("desc");
 
+  // Removendo categorias duplicadas
+  const categories = Array.from(new Set(products.map(item => item.categoria)));
 
+
+  //resetando o filtro
   function resetListProducts() {
     setDisplayProducts(products);
     setProductsByCategory(products);
     setCategoryActive("");
-  }
+  };
 
-  function searchName(e) {
+  //filtrando pelo nome
+  function filterName(e) {
     e.preventDefault();
     const value = e.target.value;
     const filter = productsByCategory.filter((product) => (String(product.nome).toLocaleLowerCase().includes(value.toLocaleLowerCase())))
     setDisplayProducts(filter);
-  }
+  };
 
+
+  //filtrando pela categoria
   function filterByCategory(category) {
     const filter = products.filter((product) => (product.categoria === category));
     setDisplayProducts(filter);
     setProductsByCategory(filter);
     setCategoryActive(category);
-  }
+  };
 
-  function toogleOrderByPrice(){
-    if(orderByPrice === "desc"){
+  //Ordenando pelo preco
+  function toogleOrderByPrice() {
+    if (orderByPrice === "desc") {
       const order = productsByCategory.sort((a, b) => ((a.preco) - (b.preco)));
       setDisplayProducts(order);
       setOrderByPrice("asc");
-    }else{
+    } else {
       const order = productsByCategory.sort((a, b) => ((b.preco) - (a.preco)));
       setDisplayProducts(order);
       setOrderByPrice("desc");
     }
-  }
-
-
+  };
 
   return (
     <>
-      <NavbarComponent onChange={(e) => searchName(e)} />
-      
-      <ButtonComponent onClick={() => { resetListProducts(); }} title="Todas"/>
 
-      {
-        categorys.map(category => (
-          <ButtonComponent onClick={() => { filterByCategory(category) }} className={categoryActive === category && 'active'} title={category}/>
-        ))
-      }
+      <NavbarComponent onChange={(e) => filterName(e)} />
 
+      <div className="itemsCategories">
+        <ButtonComponent
+          onClick={() => { resetListProducts(); }}
+          title="Todas" />
 
-      <br/>
-      <button onClick={()=>{toogleOrderByPrice()}} className={`orderByPrice ${orderByPrice}`}>
         {
-          (orderByPrice === "desc") ? "Ordernar por produtos mais baratos" : "Ordernar por produtos mais caros"
+          categories.map(category => (
+            <ButtonComponent
+              onClick={() => { filterByCategory(category) }}
+              className={categoryActive === category && 'active'}
+              title={category} />
+          ))
         }
-      </button>
+      </div>
 
+      <div className="btnPrice">
+        <ButtonComponent
+          onClick={() => { toogleOrderByPrice() }}
+          className={`orderByPrice ${orderByPrice}`}
+          title={(orderByPrice === "desc") ? "Ordernar por produtos mais baratos" : "Ordernar por produtos mais caros"}>
+        </ButtonComponent>
+      </div>
 
 
       <GridContainer style={{ marginTop: "1rem" }}>
@@ -76,16 +88,14 @@ function App() {
         {
           displayProducts.map((product, index) => (
             <GridItem key={index} xs={12} sm={12} md={12} lg={4}>
-              <CardComponent title={product?.nome} description={`R$ ${product?.preco} || ${product?.categoria}`} buttonLabel="Comprar" />
+              <CardComponent
+                title={product?.nome}
+                description={`R$ ${product?.preco} || ${product?.categoria}`}
+                buttonLabel="Comprar" />
             </GridItem>
           ))
         }
       </GridContainer>
     </>
-
-
   )
-
-}
-
-export default App;
+};

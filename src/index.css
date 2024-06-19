@@ -7,7 +7,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+button.active{
+  background-color: #3700b3;
 }
+
+
+.orderByPrice.desc{
+  background: green;
+}
+
+.orderByPrice.asc{
+  background: rgb(255, 166, 0);
+  color: #000;
+}
+
+.itemsCategories {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .btnPrice{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+

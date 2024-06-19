@@ -4,15 +4,16 @@ const Navbar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
-  background-color: #6200ea;
+  padding: 0 20px;
+  background-color: #007FFF;
   color: #fff;
   height: 64px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const Title = styled.h1`
-  font-size: 1.5em;
+  font-size: 1.5rem;
+  text-align: center;
   margin: 0;
 `;
 
@@ -25,30 +26,15 @@ const SearchContainer = styled.div`
 
 const SearchInput = styled.input`
   width: 100%;
-  max-width: 400px;
-  padding: 8px;
+  max-width: 900px;
+  padding: 10px;
   border-radius: 4px;
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-const CartButton = styled.button`
-  background-color: #03dac6;
-  color: #000;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #018786;
-  }
-`;
 
 export default function NavbarComponent(props){
-
-
 
     return(
         <>
@@ -57,10 +43,7 @@ export default function NavbarComponent(props){
             <SearchContainer>
                 <SearchInput onChange={props.onChange} type='text' placeholder='Pesquise o nome do produto...' />
             </SearchContainer>
-            <CartButton>Ver carrinho</CartButton>
         </Navbar>
-        
-        
         </>
     )
 }
